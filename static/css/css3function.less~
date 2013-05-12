@@ -1,0 +1,46 @@
+.transition (@attr,@time){
+    transition:@attr @time;
+    -moz-transition:@attr @time;
+    -webkit-transition:@attr @time;
+    -o-transition:@attr @time;
+}
+.box-sizing{
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+}
+.box-align(@value){
+    -webkit-box-align: @value; 
+    -moz-box-align: @value; 
+    -ms-flex-align: @value; 
+    box-align: @value;
+}
+.box-pack(@value){
+    -webkit-box-pack: @value; 
+    -moz-box-pack: @value; 
+    -ms-flex-pack: @value; 
+    box-pack: @value;
+
+}
+.box{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: box;
+}
+.no-select{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.has-select{
+    -webkit-touch-callout: auto;
+    -webkit-user-select: auto;
+    -khtml-user-select: auto;
+    -moz-user-select: auto;
+    -ms-user-select: auto;
+    user-select: auto;
+}

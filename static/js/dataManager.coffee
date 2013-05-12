@@ -1,0 +1,134 @@
+class DataManager extends Leaf.EventEmitter
+    constructor:()->
+        super()
+        @lastSync = 0
+        @lastUpdate = 0
+        @defaultFolderName = "daily"
+        @restoreFromLocalStorage()
+        @remoteSync()
+        App.userInfoManager.on "signin",()=>
+            # another user may logged in
+            # 
+            if @username isnt null and App.userInfoManager.username isnt @username
+                @clearUserData()
+            
+            localStorage.setItem("username",App.userInfoManager.username)
+            @restoreFromLocalStorage()
+            @remoteSync()
+    deleteFolder:(_folder)->
+        for folder,index in @data.folders
+            if folder.name is _folder.name
+                console.assert folder.timestamp is _folder.timestamp
+                @data.folders.splice(index,1)
+                @addHistory({action:"deleteFolder",folderName:folder.name}) 
+                return true
+        return false
+                
+    createFolder:(_folder)->
+        if not _folder.name
+            App.yatodo.hint Language.folderShouldHasAName
+            return null
+        for folder in @data.folders
+            if folder.name is _folder.name
+                App.yatodo.hint Language.folderWithSameNameExists
+                return null
+        @data.folders.push _folder
+        @lastUpdate = Date.now()
+        @saveToLocalStorage()
+        return _folder
+            
+    setFolderData:(newFolder)->
+        console.assert newFolder
+        for folder in @data.folders
+            if folder.name is newFolder.name
+                console.log folder,newFolder
+                console.assert folder.timestamp is newFolder.timestamp
+                folder.todos = newFolder.todos
+                @saveToLocalStorage()
+                return folder
+        return null
+    addHistory:(log)->
+        log.timestamp = Date.now()
+        @data.history.push log
+        @saveToLocalStorage()
+    getFolder:(_folder)->
+        for folder in @data.folders
+            if folder.name is _folder.name
+                return folder
+        return null
+    set:(data)->
+        @data = @check(data)
+        console.log "set",data
+        @lastUpdate = Date.now()
+        @saveToLocalStorage()
+    check:(data)->
+        console.assert data.history instanceof Array
+        console.assert data.folders instanceof Array
+        return data
+    restoreFromLocalStorage:()->
+        if not localStorage
+            return
+        init = localStorage.getItem("init")
+        @user = localStorage.getItem("username")
+        if not init or init is "yes"
+            @isFirstTime = true
+        else
+            @isFirstTime = false
+        data = localStorage.getItem("data")
+        if data
+            @data = JSON.parse(data)
+            if @data.folders instanceof Array
+                @data.folders = @data.folders.filter (value)->
+                    return value
+            if not @data.folders or @data.folders.length is 0
+                @data.folders = [@createDefaultFolder()]
+            if not @data.history
+                @data.history = []
+        else
+            @data = {folders:[@createDefaultFolder()],history:[]}
+        @lastSync = parseInt(localStorage.getItem("lastSync")) or 0
+        @lastUpdate = parseInt(localStorage.getItem("lastUpdate")) or 0
+    createDefaultFolder:()->
+        return {
+            name:@defaultFolderName
+            ,todos:[]
+            ,timestamp:0
+        }
+    clearUserData:()-> 
+        localStorage.removeItem("lastUpdate")
+        localStorage.removeItem("lastSync")
+        localStorage.removeItem("data")
+        localStorage.setItem("init","yes")
+    saveToLocalStorage:()->
+        localStorage.setItem("lastUpdate",@lastUpdate.toString())
+        localStorage.setItem("lastSync",@lastSync.toString())
+        localStorage.setItem("data",JSON.stringify(@data))
+    remoteSync:()->
+        @emit "syncStart"
+        sendData = {folders:@data.folders,history:@data.history or []}
+        if @isFirstTime and @data.folders.length is 1 and @data.folders[0].name is @defaultFolderName and @data.folders[0].todos.length is 0
+            sendData.folders = []
+        console.log sendData.folders[0]
+        call = API.sync (JSON.stringify sendData),@lastSync,@lastUpdate
+        call.success (data)=>
+            @data = data
+            @lastSync = data.lastSync
+            @lastUpdate = data.lastUpdate
+            if @data.folders.length is 0
+                @data.folders = [@createDefaultFolder()]
+            localStorage.setItem("init","no")
+            @saveToLocalStorage()
+            App.yatodo.hint Language.syncedSuccessfully
+            @emit "synced"
+            @emit "syncEnd"            
+        .fail (err,detail)=>
+            console.error "fail to sync with server",err,detail
+            if err is "Authorization Failed"
+                App.yatodo.suggestSignin()
+                App.yatodo.hint(Language.youNeedToSigninToSync)
+            else
+                App.yatodo.warn "Net Work Error"
+            @emit "syncEnd"
+                
+    
+window.DataManager = DataManager

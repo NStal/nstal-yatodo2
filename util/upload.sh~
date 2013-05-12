@@ -1,0 +1,3 @@
+#!/bin/bash
+rsync -avPziou ./* puff:~/yatodo/ --exclude="static/image/*" --exclude="yatodo.log" --exclude="yatodo.pid" --exclude="static/audio/*" --exclude="static/video/*" --exclude="static/thumb/*"
+rsync -avPziouL /home/wuminghan/yatodo/static/js/lib/leaf.js puff:~/yatodo/static/js/lib/leaf.js

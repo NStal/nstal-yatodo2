@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "api.js",
+  "sourceRoot": "../..",
+  "sources": [
+    "static/js/api.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;CAAA,KAAA,CAAA;;CAAA,CAAA,CAAc,CAAA,GAAd,GAAc;;CAAd,CACA,CAAa,CAAb,EADA,CACO;;CADP,CAEA,CAAwB,GAFxB,CAEO,MAAP;;CAFA,CAGA,KAAO,CAAP,CAAyB,QAAA;;CAHzB,CAIA,KAAO,CAAP,SAAyB;;CAJzB,CAKA,KAAO,EAAP;;CALA,CAMA,IAAA,CAAO,MAAgB,KAAA,EAAA;;CANvB,CAOA,CAAA,EAAa,CAAP,CAAc;CAPpB"
+}

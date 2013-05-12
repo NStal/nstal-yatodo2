@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "error.js",
+  "sourceRoot": "..",
+  "sources": [
+    "server/error.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;CAAA,IAAA,CAAA;;CAAA,CAAA,KAAA,QAAA;;CAAA,CACA,CAAQ,EAAR;CAAQ,CACQ,EAAZ,OAAA;CADI,CAEa,EAAjB,YAAA;CAFI,CAGU,EAAd,SAAA;CAHI,CAIgB,EAApB,eAAA;CAJI,CAKK,EAAT,IAAA;CALI,CAMU,EAAd,SAAA;CANI,CAOC,EAAL;CARJ,GAAA;;CAAA,CAUA,CAAgB,EAAhB,EAAO;CAVP"
+}

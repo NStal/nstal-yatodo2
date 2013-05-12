@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn" manifest="manifest.appcache">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <title>yatodo</title>
+    <link rel="shortcut icon" href="site-image/favicon.ico">
+    <link rel="stylesheet" href="css/style.css" type="text/css"/>
+    <link rel="stylesheet" href="css/mobile.css" type="text/css" media="only screen and (max-width:540px)" /> 
+  </head>
+  <body>
+    <div id="yatodo" class="half-screen full-screen">
+      <div class="float-content">
+	<widget data-widget="signupBox"></widget>
+	<widget data-widget="signinBox"></widget>
+	<widget data-widget="hintBox"></widget>
+	<widget data-widget="helpBox"></widget>
+	
+
+      </div>
+      <div class="solid-content">
+	<widget data-widget="actionBar"></widget>
+	<div id="main-panel" data-id="list">
+	  <widget data-widget="todoListHeader"></widget> 
+	  <div class="todo-list-container">
+	    <widget data-widget="todoList"></widget>
+	  </div>
+	  <div class="no-todo-hint" data-id="noTodoHint">
+	    Nothing in this folder (◍•ᴗ•◍)
+	  </div>
+	</div>
+	<div class="clear-float"> 
+	</div>
+      </div>
+      
+
+      
+
+      
+
+    </div>
+  </body>
+  <script type="text/javascript" src="js/lib/jquery.js"></script>
+  <script type="text/javascript" src="js/lib/leaf.js"></script>
+  <script type="text/javascript" src="js/api.js"></script>
+  <script type="text/javascript" src="js/focusList.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="js/i18n.js"></script>
+  <script type="text/javascript" src="js/hintBox.js"></script> 
+  <script type="text/javascript" src="js/dataManager.js"></script>
+  
+  <script type="text/javascript" src="js/userInfoManager.js"></script>
+  <script type="text/javascript" src="js/helpBox.js"></script>
+  <script type="text/javascript" src="js/todoListHeader.js"></script>
+  <script type="text/javascript" src="js/plugins/saveAndReloadUserState.js"></script> 
+  <script type="text/javascript" src="js/lib/pinyin.js"></script>
+  <script type="text/javascript" src="js/customScroller.js"></script> 
+</html>

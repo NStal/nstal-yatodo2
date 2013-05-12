@@ -1,0 +1,16 @@
+project_name="yatodo"
+root_dir=`pwd`
+backend_port=$RANDOM
+domain=yatodo.nstal.me
+db_name=$project_name
+
+sed="sed -i -e"
+$sed s,{project_name},$project_name,g util/service.sh
+$sed s,{project_name},$project_name,g static/index.html
+$sed s,{db_name},$db_name,g server/settings.coffee
+$sed s,{backend_port},$backend_port,g server/main.coffee
+$sed s,{root_dir},$root_dir,g nginx.conf
+$sed s,{domain},$domain,g nginx.conf
+$sed s,{backend_port},$backend_port,g nginx.conf
+
+rm create.sh

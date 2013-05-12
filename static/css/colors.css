@@ -1,0 +1,8 @@
+.gray-gradient {
+  color: #444;
+  border: solid 1px #bbb;
+  background: #white;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ededed));
+  background: -moz-linear-gradient(top, #ffffff, #ededed);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff', endColorstr='#ededed');
+}

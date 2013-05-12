@@ -1,0 +1,17 @@
+.clickable{
+    cursor:pointer;
+}
+.button{
+    display:block;
+    border:1px solid #ccc;
+    height:42px;
+    .clickable;
+    border-radius:5px;
+    color:white;
+    text-shadow:0 1px #888;
+    line-height:42px;
+    box-shadow:0 1px 0 0px white,inset 0 1px 0px 0px #ffc484;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f09952), to(#e86900));
+    background: -moz-linear-gradient(top,#f09952,#e86900);
+    text-align:center;
+}

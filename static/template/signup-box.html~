@@ -1,0 +1,6 @@
+<div class="signup-box">
+  <input type="text" placeholder="用户名" />
+  <input type="password" placeholder="密码" />
+  <input type="password" placeholder="密码确认" />
+  <button data-id="signupButton" class="signup-button"></button>
+</div>

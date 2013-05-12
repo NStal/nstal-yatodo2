@@ -1,0 +1,9 @@
+common = require "../server/common.coffee"
+describe "Test single folder Sync",()->
+    it "folder name should match",(done)->
+        serverFolder = {name:a}
+        clientFolder = {name:b}
+        try
+        
+    it "serverFolder Empty",()->
+        serverFolder = {name:a}
