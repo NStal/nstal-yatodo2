@@ -66,10 +66,12 @@
         return _this.todoList.set(folder);
       });
       this.todoListHeader.on("createFolder", function(folder) {
-        if (!App.dataManager.createFolder(folder)) {
+        folder = App.dataManager.createFolder(folder);
+        if (!folder) {
           return;
         }
-        return _this.todoListHeader.set(App.dataManager.data.folders);
+        _this.todoListHeader.set(App.dataManager.data.folders);
+        return _this.todoListHeader.goto(folder);
       });
       this.todoListHeader.set(App.dataManager.data.folders);
       this.todoListHeader.goto();

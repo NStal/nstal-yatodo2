@@ -212,6 +212,7 @@
         todos: []
       };
       this.emit("createFolder", folder);
+      this.UI.folderNameInput.value = "";
       return this.endEditCreateFolder();
     };
 

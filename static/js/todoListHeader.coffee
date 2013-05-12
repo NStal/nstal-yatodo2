@@ -133,6 +133,7 @@ class TodoListHeader extends FocusList
             todos:[]
             }
         @emit "createFolder",folder
+        @UI.folderNameInput.value = ""
         @endEditCreateFolder()
     onClickNextFolderButton:()->
         @nextFolder()

@@ -28,10 +28,14 @@ class Yatodo extends Leaf.Widget
             if @todoList.currentFocusItem and @todoList.currentFocusItem.isEdit
                 @todoList.currentFocusItem.endEdit()
             @todoList.set folder
+            
         @todoListHeader.on "createFolder",(folder)=>
-            if not App.dataManager.createFolder(folder)
+            folder = App.dataManager.createFolder(folder)
+            if not folder
                 return
             @todoListHeader.set App.dataManager.data.folders
+            @todoListHeader.goto folder
+             
         @todoListHeader.set App.dataManager.data.folders
         @todoListHeader.goto()
         super("#yatodo")
