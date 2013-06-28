@@ -2,7 +2,7 @@ class SaveAndReloadUserState
     constructor:()->
         # pass
     load:()->
-        console.log "~~~"
+        console.log "Plugin Auto Save And Reload UserState Loaded"
         localStorageCurrentFolder = "SaveAndReloadUserState-currentFolder"
         App.yatodo.todoListHeader.on "goto",(folder)->
             if localStorage
@@ -17,5 +17,4 @@ class SaveAndReloadUserState
                     
         
     unload:()->
-        
-Plugins.push new SaveAndReloadUserState() 
+Plugins.push new SaveAndReloadUserState()

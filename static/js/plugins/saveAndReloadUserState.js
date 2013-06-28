@@ -8,7 +8,7 @@
     SaveAndReloadUserState.prototype.load = function() {
       var localStorageCurrentFolder;
 
-      console.log("~~~");
+      console.log("Plugin Auto Save And Reload UserState Loaded");
       localStorageCurrentFolder = "SaveAndReloadUserState-currentFolder";
       App.yatodo.todoListHeader.on("goto", function(folder) {
         if (localStorage) {

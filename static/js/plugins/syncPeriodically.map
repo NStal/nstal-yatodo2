@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "syncPeriodically.js",
+  "sourceRoot": "../../..",
+  "sources": [
+    "static/js/plugins/syncPeriodically.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;CAAA,KAAA,UAAA;;CAAA,CAAM;CACU,EAAA,CAAA,sBAAA;CACR,EAAS,CAAR,CAAD,CAAA;CAAA,CACgB,CAAA,CAAf,EAAD,MAAA;CAFJ,IAAY;;CAAZ,EAGK,CAAL,KAAK;CACD,EAAA,GAAA,CAAO,0BAAP;CACC,EAAQ,CAAR,CAAD,IAAsB,EAAb,EAAT;CACQ,EAAD,GAAO,GAAU,MAApB,EAAA;CADiB,CAEf,EAAC,GAFe,KAAb;CALb,IAGK;;CAHL,EAQO,GAAP,GAAO;CACW,GAAC,CAAf,QAAA;CATJ,IAQO;;CARP;;CADJ;;CAAA,CAWA,EAAA,GAAO,SAAU;CAXjB"
+}
