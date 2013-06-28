@@ -63,11 +63,12 @@
 
     SignupBox.prototype.show = function() {
       SignupBox.__super__.show.call(this);
-      return this.km.master();
+      return Leaf.KeyEventManager.disable();
     };
 
     SignupBox.prototype.hide = function() {
       SignupBox.__super__.hide.call(this);
+      Leaf.KeyEventManager.enable();
       return this.km.unmaster();
     };
 
@@ -117,13 +118,12 @@
 
     SigninBox.prototype.show = function() {
       SigninBox.__super__.show.call(this);
-      console.log("~~~");
-      return this.km.master();
+      return Leaf.KeyEventManager.disable();
     };
 
     SigninBox.prototype.hide = function() {
       SigninBox.__super__.hide.call(this);
-      return this.km.unmaster();
+      return Leaf.KeyEventManager.enable();
     };
 
     SigninBox.prototype.onClickClose = function() {

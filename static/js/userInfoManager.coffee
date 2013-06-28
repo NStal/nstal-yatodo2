@@ -32,9 +32,10 @@ class SignupBox extends FadeBox
         @km.attachTo window
     show:()->
         super()
-        @km.master()
+        Leaf.KeyEventManager.disable()
     hide:()->
         super()
+        Leaf.KeyEventManager.enable()
         @km.unmaster()
 
     onClickToSigninBox:()->
@@ -66,11 +67,10 @@ class SigninBox extends FadeBox
         @km.attachTo window
     show:()->
         super()
-        console.log "~~~"
-        @km.master()
+        Leaf.KeyEventManager.disable()
     hide:()->
         super()
-        @km.unmaster()
+        Leaf.KeyEventManager.enable()
     onClickClose:()->
         @hide()
     onClickToSignupBox:()->
